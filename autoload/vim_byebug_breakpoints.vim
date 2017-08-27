@@ -45,6 +45,7 @@ ruby <<EOF
       orig_length = rc_str.length
 
       if rc_str.gsub! break_code, ''
+        rc_str.gsub! /^$\n/, ''
         File.open(rc_filename, 'w') {|f| f.write rc_str }
         removed = true 
       end
