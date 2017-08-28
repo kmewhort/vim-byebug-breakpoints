@@ -12,14 +12,17 @@ Install `kmewhort/vim-byebug-breakpoints` using your favourite vim plugin manage
 
 Once installed, use <Leader>b to toggle breakpoints on/off in any ruby code. You can disable this mapping with `let g:vim_byebug_breakpoints_map_keys = 0`, then map the key combination of your choice to the command `:ToggleByebugBreakpoint`.
 
-Your breakpoints will be hit when you launch ruby scripts, specs, etc using eg. `byebug rpsec my_code.rb`.  Alternatively, you can add byebug hooks directly into your spec helper or other initialization code: 
-
-Ensure that you start vim from your project directory - this is where Vim Byebug Breakpoints looks for your .byebug.rc.
+You have several options for running your code with byebug and hitting the breakpoints:
+ 1. Launch ruby scripts, specs, etc using byebug - eg. `byebug rpsec my_code.rb`;
+ 2. Add byebug hooks directly into your spec helper or other initialization code - eg.
 ```
 require 'byebug'
 Byebug.start
 Byebug.run_init_script
 ```
+3. For use with Rails, use [byebug-rails-loader](https://github.com/kmewhort/byebug-rails-loader)
+
+Ensure that you start vim from your project directory - this is where Vim Byebug Breakpoints looks for your .byebug.rc.
 
 ## Contributing
 
