@@ -22,7 +22,7 @@ Byebug.run_init_script
 ```
 3. For use with Rails, use [byebug-rails-loader](https://github.com/kmewhort/byebug-rails-loader)
 
-Ensure that you start vim from your project directory - this is where Vim Byebug Breakpoints looks for your .byebug.rc.
+Ensure that you start vim from your project directory - this is where Vim Byebug Breakpoints looks for your .byebug.rc first time. If not found it will  go up throught the ancestors until found a .byebug.rc if not It will create one at current directory.
 
 ## Contributing
 
