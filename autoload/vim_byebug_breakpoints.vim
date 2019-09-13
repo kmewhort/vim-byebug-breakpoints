@@ -6,6 +6,16 @@ ruby <<EOF
   rc_filename = "#{base_dir}/.byebugrc"
   file_in_buffer = Vim::Buffer.current.name
 
+  (0..base_dir.split('/').reject(&:empty?).count - 1).each do |step|
+    path = File.absolute_path(base_dir + '/../' * step)
+    file_path = path + '/.byebugrc'
+    if File.exists?(file_path)
+      base_dir = path
+      rc_filename = "#{base_dir}/.byebugrc"
+      break
+    end
+  end
+
   if File.exist?(rc_filename) && file_in_buffer && file_in_buffer.start_with?(base_dir)
     file_in_buffer = file_in_buffer[base_dir.length+1..-1] 
     lines_with_breaks = []
@@ -33,6 +43,16 @@ ruby <<EOF
   base_dir = Vim::evaluate('getcwd()')
   rc_filename = "#{base_dir}/.byebugrc"
   file_in_buffer = Vim::Buffer.current.name
+
+  (0..base_dir.split('/').reject(&:empty?).count - 1).each do |step|
+    path = File.absolute_path(base_dir + '/../' * step)
+    file_path = path + '/.byebugrc'
+    if File.exists?(file_path)
+      base_dir = path
+      rc_filename = "#{base_dir}/.byebugrc"
+      break
+    end
+  end
 
   if file_in_buffer && file_in_buffer.start_with?(base_dir)
     file_in_buffer = file_in_buffer[base_dir.length+1..-1] 
